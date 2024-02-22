@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './Alert'
 
 export default function TextForm(props) {
     const textAreaOnchangeHandler = (event)=>{
@@ -7,12 +8,13 @@ export default function TextForm(props) {
     const UpperCaseHandler = (event)=>{
         let newText = text.toUpperCase();
         setText(newText);
-        
+        props.showAlert('Converted to upper case',"success")
     }
     const LowerCaseHandler = (event)=>{
         let newText = text.toLowerCase();
         setText(newText);
-        
+        props.showAlert('Converted to lower case',"success")
+
     }
     const OnClearHandler = ()=>{
         setText("");
@@ -31,6 +33,7 @@ export default function TextForm(props) {
                 backgroundColor: 'black'
             })
             setBtnText("Enable Light Mode");
+            props.showAlert('info','Dark Mode has been enabled');
         }
         else{
             setStyeleStet({
@@ -38,6 +41,7 @@ export default function TextForm(props) {
                 backgroundColor: 'white'
             })
             setBtnText("Enable Dark Mode")
+            props.showAlert('info','Light Mode has been enabled');
         }
     }
   return (
